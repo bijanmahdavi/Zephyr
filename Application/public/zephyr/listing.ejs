@@ -1,0 +1,95 @@
+<!-- DB Property -->
+
+
+
+<div class="col-12 col-md-6 col-xl-4" style="cursor: pointer;">
+    <div class="single-featured-property mb-50 wow fadeInUp" data-wow-delay="100ms" data-toggle="modal"
+        data-target="#myModal">
+        <!-- Property Thumbnail -->
+        <div class="property-thumb">
+            <img src="img/bg-img/feature1.jpg" alt="">
+
+            <div class="tag">
+                <span>For Sale</span>
+            </div>
+            <div class="list-price">
+                <p>$<%= listing.price %></p>
+            </div>
+        </div>
+        <!-- Property Content -->
+        <div class="property-content">
+            <h5><%= listing.name %></h5>
+            <p class="location"><img src="img/icons/location.png" alt=""><%= listing.address %></p>
+            <p><%= listing.description %></p>
+            <div class="property-meta-data d-flex align-items-end justify-content-between">
+                <div class="new-tag">
+                    <img src="img/icons/new.png" alt="">
+                </div>
+                <div class="bathroom">
+                    <img src="img/icons/bathtub.png" alt="">
+                    <span><%= listing.numOfBathroom %></span>
+                </div>
+                <div class="garage">
+                    <img src="img/icons/garage.png" alt="">
+                    <span><%= listing.numOfBedroom %></span>
+                </div>
+                <div class="space">
+                    <img src="img/icons/space.png" alt="">
+                    <span><%= listing.houseSize %> sq ft</span>
+                </div>
+            </div>
+            <% if (!approve) { %>
+            <div class="property-meta-data d-flex justify-content-between align-items-end">
+                <!-- Submit -->
+                <form action="/listing/<%= listing.id %>/approve" method="post">
+                    <button type="submit" class="btn south-btn"
+                        style="min-width: 130px; margin: 20px 10px;">Approve</button>
+                </form>
+                <form action="/listing/<%= listing.id %>/delete" method="post">
+                    <button type="submit" class="btn south-btn"
+                        style="min-width: 130px; margin: 20px 10px;">Decline</button>
+                </form>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="property-content">
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row-no-gutters">
+                        <div class="col-sm-4">
+                            <img class="img-fluid" id="image-size" src="img/bg-img/feature1.jpg"
+                                alt="IMAGE PLACEHOLDER">
+                        </div>
+                        <div class="col-sm-8">
+                            <h5 onclick="console.log('<%= listing.address %>')"><%= listing.address %></h5>
+                            <p><%= listing.description %></p>
+                            <p><%= listing.address %>, CA <%= listing.zipCode %></p>
+                            <p>$<%= listing.price %></p>
+                            <p>Bedrooms: <%= listing.numOfBedroom %></p>
+                            <p>Bathrooms: <%= listing.numOfBathroom %></p>
+                            <p><%= listing.houseSize %> sq. ft.</p>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Contact Landlord</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

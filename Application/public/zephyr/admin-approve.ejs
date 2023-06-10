@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('head'); %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <%- include('header'); %>
+
+    <!-- ##### Breadcumb Area Start ##### -->
+    <section class="breadcumb-area bg-img" style="background-image: url(img/bg-img/hero1.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-content">
+                        <h3 class="breadcumb-title">Admin Approve</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Breadcumb Area End ##### -->
+
+    <!-- ##### Listing Content Wrapper Area Start ##### -->
+    <section class="listings-content-wrapper section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="listings-top-meta d-flex justify-content-between mb-100">
+                        
+                        <div class="order-by-area d-flex align-items-center">
+                            <span class="mr-15">Order by:</span>
+                            <select>
+                                <option selected>Default</option>
+                                <option value="1">Newest</option>
+                                <option value="2">Sales</option>
+                                <option value="3">Ratings</option>
+                                <option value="3">Popularity</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <% if (listings) { %>
+                    <% listings.forEach(function(listing){ %>
+                        <%- include('listing', {listing: listing.dataValues}); %>
+                    <% }); %>
+                <% } %>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- ##### Listing Content Wrapper Area End ##### -->
+
+    <%- include('footer'); %>
+    <%- include('script'); %>
+</body>
+
+</html>
